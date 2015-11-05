@@ -16,17 +16,17 @@
             this.images = new HashSet<Image>();
         }
 
-        public int TouristSitesId { get; set; }
+        public int TouristSiteId { get; set; }
 
         [Required]
         [MinLength(2)]
         [MaxLength(30)]
-        public int Name { get; set; }
+        public string Name { get; set; }
 
-        public int Description { get; set; }
+        public string Description { get; set; }
 
         [Required]
-        public string CityId { get; set; }
+        public int CityId { get; set; }
 
         public virtual City City { get; set; }
 
