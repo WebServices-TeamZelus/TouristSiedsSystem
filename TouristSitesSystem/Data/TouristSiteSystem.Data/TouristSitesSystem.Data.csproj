@@ -59,9 +59,11 @@
   <ItemGroup>
     <Compile Include="EfGenericRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="ITouristSiteData.cs" />
     <Compile Include="ITouristSitesSystemDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TouristSiteData.cs" />
     <Compile Include="TouristSitesSystemDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
