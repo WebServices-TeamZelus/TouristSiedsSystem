@@ -24,5 +24,10 @@
         {
             return new TouristSitesSystemDbContext();
         }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
     }
 }
