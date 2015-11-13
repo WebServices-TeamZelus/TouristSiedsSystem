@@ -4,9 +4,15 @@
     using System.Web.Http;
 
     using Models;
+    using TouristSiteSystem.Data;
 
     public class CitiesController : BaseController
     {
+        public CitiesController(ITouristSiteData data)
+            : base(data)
+        {
+        }
+
         public IHttpActionResult Get()
         {
             var cities = this.data

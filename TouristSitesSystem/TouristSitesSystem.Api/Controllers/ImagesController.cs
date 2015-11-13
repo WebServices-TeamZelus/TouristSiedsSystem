@@ -2,11 +2,18 @@
 {
     using System.Linq;
     using System.Web.Http;
+
     using Models;
+    using TouristSiteSystem.Data;
     using TouristSiteSystem.Model;
 
     public class ImagesController : BaseController
     {
+        public ImagesController(ITouristSiteData data)
+            : base(data)
+        {
+        }
+
         public IHttpActionResult Get()
         {
             var images = this.data

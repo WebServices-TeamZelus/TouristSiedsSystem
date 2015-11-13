@@ -13,9 +13,9 @@
             this.data = data;
         }
 
-        public BaseController()
-            : this(new TouristSiteData())
-        {
-        }
+        //public BaseController()
+        //    : this(new TouristSiteData())
+        //{
+        //}
     }
 }
