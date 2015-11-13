@@ -11,6 +11,10 @@
 
         public string Description { get; set; }
 
+        public int Like { get; set; }
+
+        public int Dislike { get; set; }
+
         [MaxLength(50)]
         public string Email { get; set; }
 
