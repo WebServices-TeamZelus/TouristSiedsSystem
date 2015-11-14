@@ -20,7 +20,7 @@
 
         [Required]
         [MinLength(2)]
-        [MaxLength(30)]
+        [MaxLength(60)]
         public string Name { get; set; }
 
         public string Description { get; set; }
