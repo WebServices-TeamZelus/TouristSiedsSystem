@@ -1,8 +1,9 @@
 namespace TouristSiteSystem.Data.Migrations
 {
     using System.Data.Entity.Migrations;
-    
-   public sealed class Configuration : DbMigrationsConfiguration<TouristSitesSystemDbContext>
+    using System.Web.Security;
+
+    public sealed class Configuration : DbMigrationsConfiguration<TouristSitesSystemDbContext>
     {
         public Configuration()
         {
@@ -12,7 +13,16 @@ namespace TouristSiteSystem.Data.Migrations
 
         protected override void Seed(TouristSitesSystemDbContext context)
         {
-            
+            if (!Roles.RoleExists("Admin"))
+            {
+                Roles.CreateRole("Admin");
+            }
+
+            if (Membership.GetUser("testUser") == null)
+            {
+                Membership.CreateUser("testUser", "somePass");
+                Roles.AddUsersToRole(new[] { "testUser" }, "Admin");
+            }
         }
     }
 }
