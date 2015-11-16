@@ -47,6 +47,7 @@
             else
             {
                 this.DbSet.Add(entity);
+                SaveChanges();
             }
         }
 
@@ -56,6 +57,7 @@
             if (entry.State == EntityState.Detached)
             {
                 this.DbSet.Attach(entity);
+                SaveChanges();
             }
 
             entry.State = EntityState.Modified;
@@ -72,6 +74,7 @@
             {
                 this.DbSet.Attach(entity);
                 this.DbSet.Remove(entity);
+                SaveChanges();
             }
         }
 
@@ -82,6 +85,7 @@
             if (entity != null)
             {
                 this.Delete(entity);
+                SaveChanges();
             }
         }
 
