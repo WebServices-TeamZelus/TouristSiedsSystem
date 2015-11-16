@@ -2,7 +2,7 @@
 {
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using TouristSiteSystem.Model;
+    using Model;
 
     public interface ITouristSitesSystemDbContext
     {

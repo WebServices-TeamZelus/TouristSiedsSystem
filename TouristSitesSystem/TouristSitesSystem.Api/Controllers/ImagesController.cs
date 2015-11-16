@@ -43,7 +43,7 @@
             return this.Ok(image);
         }
 
-        [Authorize]
+        //[Authorize]
         public IHttpActionResult Post(ImageRequestModel model)
         {
             if (!this.ModelState.IsValid)
