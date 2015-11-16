@@ -2,27 +2,43 @@
 {
     using System.Linq;
     using System.Web.Http;
+    using System.Web.Http.Cors;
     using Models;
     using TouristSiteSystem.Data;
     using TouristSiteSystem.Model;
-    using System.Collections.Generic;
-    using System.Web.Http.Cors;
 
     [EnableCors("*", "*", "*")]
-    public class AccomodationsController : ApiController
+    public class AccomodationsController : BaseController
     {
-        private TouristSitesSystemDbContext db = new TouristSitesSystemDbContext();
+        public AccomodationsController(ITouristSiteData data) 
+            : base(data)
+        {
+        }
 
         public IHttpActionResult Get()
         {
-            var accomodations = this.db.Accomodation.ToList();
+            var accomodations = this.data
+                .Accomodations
+                .All()
+                .Select(AccomodationResponseModel.FromModel)
+                .ToList();
             return this.Ok(accomodations);
         }
 
         public IHttpActionResult Get(int id)
         {
-            List<Accomodation> accomodations = this.db.Accomodation.ToList();
-            return this.Ok(accomodations.Find(a => a.AccomodationId == id));
+            var accomodation = this.data
+                 .Accomodations
+                 .SearchFor(a => a.AccomodationId == id)
+                 .Select(AccomodationResponseModel.FromModel)
+                 .FirstOrDefault();
+
+            if (accomodation == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok(accomodation);
         }
 
         public IHttpActionResult Post(AccomodationRequestModel accomodation)
@@ -32,7 +48,7 @@
                 return this.BadRequest(this.ModelState);
             }
 
-            var dbAccomodation = new Accomodation
+            var accomodationToAdd = new Accomodation
             {
                 Name = accomodation.Name,
                 Description = accomodation.Description,
@@ -42,41 +58,51 @@
                 CityId = accomodation.CityId,
             };
 
-            this.db.Accomodation.Add(dbAccomodation);
-            this.db.SaveChanges();
+            this.data.Accomodations.Add(accomodationToAdd);
 
             return this.Ok(accomodation);
         }
 
         public IHttpActionResult Delete(int id)
         {
-            Accomodation accomodation = this.db.Accomodation.Find(id);
+            var accomodation = this.data
+                    .Accomodations
+                    .SearchFor(a => a.AccomodationId == id)
+                    .Select(AccomodationResponseModel.FromModel)
+                    .FirstOrDefault();
+
             if (accomodation == null)
             {
                 return this.NotFound();
             }
 
-            this.db.Accomodation.Remove(accomodation);
-            this.db.SaveChanges();
+            this.data.Accomodations.Delete(accomodation);
             return this.Ok(accomodation);
         }
 
-        public IHttpActionResult Put(int id, AccomodationRequestModel accomodation)
+        public IHttpActionResult Put(int id, AccomodationRequestModel accomodationImput)
         {
-            Accomodation dbAccomodation = this.db.Accomodation.Find(id);
-            if (dbAccomodation == null)
+            var accomodation = this.data
+                             .Accomodations
+                             .SearchFor(a => a.AccomodationId == id)
+                             .Select(AccomodationResponseModel.FromModel)
+                             .FirstOrDefault();
+
+            if (accomodation == null)
             {
                 return this.NotFound();
             }
 
-            dbAccomodation.Name = accomodation.Name;
-            dbAccomodation.Description = accomodation.Description;
-            dbAccomodation.Email = accomodation.Name;
-            dbAccomodation.Mobile = accomodation.Mobile;
-            dbAccomodation.Adress = accomodation.Adress;
-            dbAccomodation.CityId = accomodation.CityId;
-            this.db.SaveChanges();
-            return this.Ok(dbAccomodation);
+            accomodation.Name = accomodationImput.Name;
+            accomodation.Description = accomodationImput.Description;
+            accomodation.Email = accomodationImput.Name;
+            accomodation.Mobile = accomodationImput.Mobile;
+            accomodation.Adress = accomodationImput.Adress;
+            accomodation.CityId = accomodationImput.CityId;
+
+            this.data.Accomodations.SaveChanges();
+
+            return this.Ok(accomodation);
         }
     }
 }

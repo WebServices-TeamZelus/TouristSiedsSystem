@@ -1,26 +1,45 @@
 ﻿namespace TouristSitesSystem.Api.Controllers
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
+    using System.Web.Http.Cors;
     using Models;
     using TouristSiteSystem.Data;
     using TouristSiteSystem.Model;
 
-    public class TouristSitesController : ApiController
+    [EnableCors("*", "*", "*")]
+    public class TouristSitesController : BaseController
     {
-        private TouristSitesSystemDbContext db = new TouristSitesSystemDbContext();
+        public TouristSitesController(ITouristSiteData data)
+            : base(data)
+        {
+        }
 
         public IHttpActionResult Get()
         {
-            var touristSites = this.db.TouristSite.ToList();
+            var touristSites = this.data
+                .TouristSites
+                .All()
+                .Select(TouristSiteResponseModel.FromModel)
+                .ToList();
+
             return this.Ok(touristSites);
         }
 
         public IHttpActionResult Get(int id)
         {
-            List<TouristSite> touristSites = this.db.TouristSite.ToList();
-            return this.Ok(touristSites.Find(a => a.TouristSiteId == id));
+            var touristSite = this.data
+                 .TouristSites
+                 .SearchFor(t => t.TouristSiteId == id)
+                 .Select(TouristSiteResponseModel.FromModel)
+                 .FirstOrDefault();
+
+            if (touristSite == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok(touristSite);
         }
 
         public IHttpActionResult Post(TouristSiteRequestModel touristSite)
@@ -30,45 +49,56 @@
                 return this.BadRequest(this.ModelState);
             }
 
-            var dbTouristSite = new TouristSite
+            var touristSiteToAdd = new TouristSite
             {
                 Name = touristSite.Name,
                 Description = touristSite.Description,
-                CityId = touristSite.CityId,
+                CityId = touristSite.CityId
             };
 
-            this.db.TouristSite.Add(dbTouristSite);
-            this.db.SaveChanges();
+            this.data.TouristSites.Add(touristSiteToAdd);
 
-            return this.Ok(touristSite);
+            return this.Ok();
         }
 
         public IHttpActionResult Delete(int id)
         {
-            TouristSite touristSite = this.db.TouristSite.Find(id);
+            var touristSite = this.data
+                 .TouristSites
+                 .SearchFor(t => t.TouristSiteId == id)
+                 .Select(TouristSiteResponseModel.FromModel)
+                 .FirstOrDefault();
+
             if (touristSite == null)
             {
                 return this.NotFound();
             }
 
-            this.db.TouristSite.Remove(touristSite);
-            this.db.SaveChanges();
+            this.data.TouristSites.Delete(touristSite);
+
             return this.Ok(touristSite);
         }
 
-        public IHttpActionResult Put(int id, TouristSiteRequestModel touristSite)
+        public IHttpActionResult Put(int id, TouristSiteRequestModel touristSiteImput)
         {
-            TouristSite dbTouristSite = this.db.TouristSite.Find(id);
-            if (dbTouristSite == null)
+             var touristSite = this.data
+                  .TouristSites
+                  .SearchFor(t => t.TouristSiteId == id)
+                  .Select(TouristSiteResponseModel.FromModel)
+                  .FirstOrDefault();
+
+            if (touristSite == null)
             {
                 return this.NotFound();
             }
 
-            dbTouristSite.Name = touristSite.Name;
-            dbTouristSite.Description = touristSite.Description;
-            dbTouristSite.CityId = touristSite.CityId;
-            this.db.SaveChanges();
-            return this.Ok(dbTouristSite);
+            touristSite.Name = touristSiteImput.Name;
+            touristSite.Description = touristSiteImput.Description;
+            touristSite.CityId = touristSiteImput.CityId;
+
+            this.data.TouristSites.SaveChanges();
+
+            return this.Ok(touristSite);
         }
     }
 }
