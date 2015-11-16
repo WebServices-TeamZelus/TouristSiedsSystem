@@ -6,7 +6,9 @@
     using TouristSiteSystem.Data;
     using TouristSiteSystem.Model;
     using System.Collections.Generic;
+    using System.Web.Http.Cors;
 
+    [EnableCors("*", "*", "*")]
     public class AccomodationsController : ApiController
     {
         private TouristSitesSystemDbContext db = new TouristSitesSystemDbContext();

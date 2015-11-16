@@ -6,7 +6,9 @@
     using Models;
     using TouristSiteSystem.Data;
     using TouristSiteSystem.Model;
+    using System.Web.Http.Cors;
 
+    [EnableCors("*", "*", "*")]
     public class ImagesController : BaseController
     {
         public ImagesController(ITouristSiteData data)

@@ -5,7 +5,9 @@
 
     using Models;
     using TouristSiteSystem.Data;
+    using System.Web.Http.Cors;
 
+    [EnableCors("*", "*", "*")]
     public class CitiesController : BaseController
     {
         public CitiesController(ITouristSiteData data)

@@ -17,10 +17,12 @@ using TouristSitesSystem.Api.Models;
 using TouristSitesSystem.Api.Providers;
 using TouristSitesSystem.Api.Results;
 using TouristSiteSystem.Model;
+using System.Web.Http.Cors;
 
 namespace TouristSitesSystem.Api.Controllers
 {
     [Authorize]
+    [EnableCors("*", "*", "*")]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
