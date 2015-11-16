@@ -1,8 +1,8 @@
 namespace TouristSiteSystem.Data.Migrations
 {
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
-    
-   public sealed class Configuration : DbMigrationsConfiguration<TouristSitesSystemDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<TouristSitesSystemDbContext>
     {
         public Configuration()
         {
@@ -11,8 +11,8 @@ namespace TouristSiteSystem.Data.Migrations
         }
 
         protected override void Seed(TouristSitesSystemDbContext context)
-        {
-            
+        {           
+           // Membership.CreateUser("testUser", "somePass");
         }
     }
 }

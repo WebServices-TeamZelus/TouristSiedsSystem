@@ -3,6 +3,7 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
+    using System.Linq.Expressions;
 
     public class EfGenericRepository<T> : IRepository<T> where T : class
     {
@@ -24,6 +25,11 @@
         public virtual IQueryable<T> All()
         {
             return this.DbSet.AsQueryable();
+        }
+
+        public IQueryable<T> SearchFor(Expression<Func<T, bool>> conditions)
+        {
+            return this.All().Where(conditions);
         }
 
         public virtual T GetById(object id)

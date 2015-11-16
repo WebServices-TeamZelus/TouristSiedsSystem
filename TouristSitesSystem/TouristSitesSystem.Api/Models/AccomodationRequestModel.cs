@@ -1,19 +1,14 @@
-﻿namespace TouristSiteSystem.Model
+﻿namespace TouristSitesSystem.Api.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using TouristSiteSystem.Model;
 
-    public class Accomodation
+    public class AccomodationRequestModel
     {
-        public int AccomodationId { get; set; }
-
         [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
-
-        public int Like { get; set; }
-
-        public int Dislike { get; set; }
 
         [MaxLength(50)]
         public string Email { get; set; }
@@ -29,6 +24,5 @@
         [Required]
         public int CityId { get; set; }
 
-        public virtual City City { get; set; }
     }
 }

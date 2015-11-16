@@ -8,7 +8,7 @@
         public int ImageId { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(150)]
         public string Url { get; set; }
 
         [MaxLength(200)]
