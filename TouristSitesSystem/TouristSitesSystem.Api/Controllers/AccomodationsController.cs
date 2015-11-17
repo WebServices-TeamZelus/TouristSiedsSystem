@@ -10,11 +10,12 @@
     [EnableCors("*", "*", "*")]
     public class AccomodationsController : BaseController
     {
-        public AccomodationsController(ITouristSiteData data) 
+        public AccomodationsController(ITouristSiteData data)
             : base(data)
         {
         }
 
+        [HttpGet]
         public IHttpActionResult Get()
         {
             var accomodations = this.data
@@ -25,7 +26,8 @@
             return this.Ok(accomodations);
         }
 
-        public IHttpActionResult Get(int id)
+        [HttpGet]
+        public IHttpActionResult GetById(int id)
         {
             var accomodation = this.data
                  .Accomodations
@@ -41,6 +43,8 @@
             return this.Ok(accomodation);
         }
 
+        [Authorize]
+        [HttpPost]
         public IHttpActionResult Post(AccomodationRequestModel accomodation)
         {
             if (!this.ModelState.IsValid)
@@ -59,10 +63,13 @@
             };
 
             this.data.Accomodations.Add(accomodationToAdd);
+            data.SaveChanges();
 
             return this.Ok(accomodation);
         }
 
+        [Authorize]
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             var accomodation = this.data
@@ -76,16 +83,19 @@
                 return this.NotFound();
             }
 
-            this.data.Accomodations.Delete(accomodation);
+            this.data.Accomodations.Delete(accomodation.AccomodationId);
+            data.SaveChanges();
             return this.Ok(accomodation);
         }
 
+        [Authorize]
+        [HttpPut]
         public IHttpActionResult Put(int id, AccomodationRequestModel accomodationImput)
         {
             var accomodation = this.data
                              .Accomodations
-                             .SearchFor(a => a.AccomodationId == id)
-                             .Select(AccomodationResponseModel.FromModel)
+                             .All()
+                             .Where(a => a.AccomodationId==id)
                              .FirstOrDefault();
 
             if (accomodation == null)
@@ -100,7 +110,8 @@
             accomodation.Adress = accomodationImput.Adress;
             accomodation.CityId = accomodationImput.CityId;
 
-            this.data.Accomodations.SaveChanges();
+            this.data.Accomodations.Update(accomodation);
+            data.SaveChanges();
 
             return this.Ok(accomodation);
         }

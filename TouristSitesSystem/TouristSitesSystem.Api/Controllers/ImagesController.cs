@@ -16,6 +16,7 @@
         {
         }
 
+        [HttpGet]
         public IHttpActionResult Get()
         {
             var images = this.data
@@ -27,7 +28,8 @@
             return this.Ok(images);
         }
 
-        public IHttpActionResult Get(int id)
+        [HttpGet]
+        public IHttpActionResult GetById(int id)
         {
             var image = this.data
                 .Images
@@ -43,7 +45,8 @@
             return this.Ok(image);
         }
 
-        //[Authorize]
+        [Authorize]
+        [HttpPost]
         public IHttpActionResult Post(ImageRequestModel model)
         {
             if (!this.ModelState.IsValid)
@@ -60,8 +63,55 @@
             };
 
             this.data.Images.Add(imageToAdd);
+            data.SaveChanges();
 
             return this.Ok();
+        }
+
+        [Authorize]
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            var image = this.data
+                    .Images
+                    .SearchFor(i => i.ImageId == id)
+                    .Select(ImageResponseModel.FromModel)
+                    .FirstOrDefault();
+
+            if (image == null)
+            {
+                return this.NotFound();
+            }
+
+            this.data.Images.Delete(image.ImageId);
+            data.SaveChanges();
+
+            return this.Ok(image);
+        }
+
+        [Authorize]
+        [HttpPut]
+        public IHttpActionResult Put(int id, ImageRequestModel model)
+        {
+            var image = this.data
+                             .Images
+                             .All()
+                             .Where(i => i.ImageId == id)
+                             .FirstOrDefault();
+
+            if (image == null)
+            {
+                return this.NotFound();
+            }
+
+            image.Url = model.Url;
+            image.Description = model.Description;
+            image.TouristSideId = model.TouristSideId;
+
+            this.data.Images.Update(image);
+            data.SaveChanges();
+
+            return this.Ok(image);
         }
     }
 }

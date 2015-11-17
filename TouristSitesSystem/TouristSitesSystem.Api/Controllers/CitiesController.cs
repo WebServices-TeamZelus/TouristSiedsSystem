@@ -15,6 +15,7 @@
         {
         }
 
+        [HttpGet]
         public IHttpActionResult Get()
         {
             var cities = this.data
@@ -26,7 +27,8 @@
             return this.Ok(cities);
         }
 
-        public IHttpActionResult Get(int id)
+        [HttpGet]
+        public IHttpActionResult GetById(int id)
         {
             var city = this.data
                 .Cities

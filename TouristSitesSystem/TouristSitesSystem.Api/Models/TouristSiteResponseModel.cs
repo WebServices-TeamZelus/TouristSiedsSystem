@@ -14,10 +14,12 @@
                 {
                     Name = t.Name,
                     Description = t.Description,
-                    CityId=t.CityId
+                    CityId = t.CityId
                 };
             }
         }
+
+        public int TouristSiteId { get; set; }
 
         public string Name { get; set; }
 

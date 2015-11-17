@@ -15,6 +15,7 @@
         {
         }
 
+        [HttpGet]
         public IHttpActionResult Get()
         {
             var touristSites = this.data
@@ -26,6 +27,7 @@
             return this.Ok(touristSites);
         }
 
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             var touristSite = this.data
@@ -42,6 +44,8 @@
             return this.Ok(touristSite);
         }
 
+        [Authorize]
+        [HttpPost]
         public IHttpActionResult Post(TouristSiteRequestModel touristSite)
         {
             if (!this.ModelState.IsValid)
@@ -57,10 +61,13 @@
             };
 
             this.data.TouristSites.Add(touristSiteToAdd);
+            data.SaveChanges();
 
             return this.Ok();
         }
 
+        [Authorize]
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             var touristSite = this.data
@@ -74,17 +81,20 @@
                 return this.NotFound();
             }
 
-            this.data.TouristSites.Delete(touristSite);
+            this.data.TouristSites.Delete(touristSite.TouristSiteId);
+            data.SaveChanges();
 
             return this.Ok(touristSite);
         }
 
+        [Authorize]
+        [HttpPut]
         public IHttpActionResult Put(int id, TouristSiteRequestModel touristSiteImput)
         {
              var touristSite = this.data
                   .TouristSites
-                  .SearchFor(t => t.TouristSiteId == id)
-                  .Select(TouristSiteResponseModel.FromModel)
+                  .All()
+                  .Where(t => t.TouristSiteId == id)
                   .FirstOrDefault();
 
             if (touristSite == null)
@@ -96,7 +106,8 @@
             touristSite.Description = touristSiteImput.Description;
             touristSite.CityId = touristSiteImput.CityId;
 
-            this.data.TouristSites.SaveChanges();
+            this.data.TouristSites.Update(touristSite);
+            data.SaveChanges();
 
             return this.Ok(touristSite);
         }
