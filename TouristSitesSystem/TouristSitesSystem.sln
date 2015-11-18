@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouristSitesSystem.Api", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouristSystem.WebClient", "TouristSystem.WebClient\TouristSystem.WebClient.csproj", "{F87B9525-C8A4-47D4-ACAD-E280C0AD8185}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{245B62C0-D5BE-48D6-A89D-6D97D08C5FC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouristSitesSystem.Api.Tests", "Tests\TouristSitesSystem.Api.Tests\TouristSitesSystem.Api.Tests.csproj", "{83A820AC-0024-4C4A-88EE-13F1F3456EF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,10 @@ Global
 		{F87B9525-C8A4-47D4-ACAD-E280C0AD8185}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F87B9525-C8A4-47D4-ACAD-E280C0AD8185}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F87B9525-C8A4-47D4-ACAD-E280C0AD8185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83A820AC-0024-4C4A-88EE-13F1F3456EF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83A820AC-0024-4C4A-88EE-13F1F3456EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83A820AC-0024-4C4A-88EE-13F1F3456EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83A820AC-0024-4C4A-88EE-13F1F3456EF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,5 +53,6 @@ Global
 		{7320D9D6-C0B4-4BCB-A85E-4950A89E5274} = {5E142E71-DB1A-44B0-A007-38F3691997FC}
 		{3279FB31-1D68-49CC-A8D2-41503177CCAD} = {5E142E71-DB1A-44B0-A007-38F3691997FC}
 		{2FA516A1-528E-4D09-9AF9-17B9BF2E0D3D} = {D3875BB9-572D-4440-B6A4-34D5EFD4B6D6}
+		{83A820AC-0024-4C4A-88EE-13F1F3456EF9} = {245B62C0-D5BE-48D6-A89D-6D97D08C5FC6}
 	EndGlobalSection
 EndGlobal

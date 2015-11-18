@@ -12,6 +12,7 @@
             {
                 return i => new ImageResponseModel
                 {
+                    ImageId=i.ImageId,
                     Url = i.Url,
                     TouristSiteName = i.TouristSite.Name
                 };

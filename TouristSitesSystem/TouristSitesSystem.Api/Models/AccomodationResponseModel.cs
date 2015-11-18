@@ -12,6 +12,7 @@
             {
                 return a => new AccomodationResponseModel
                 {
+                    AccomodationId=a.AccomodationId,
                     Name = a.Name,
                     Description = a.Description,
                     CityId = a.CityId,
