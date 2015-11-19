@@ -15,11 +15,6 @@
             this.repositories = new Dictionary<Type, object>();
         }
 
-        //public TouristSiteData()
-        //    : this(new TouristSitesSystemDbContext())
-        //{
-        //}
-
         public IRepository<Accomodation> Accomodations
         {
             get

@@ -5,7 +5,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using TouristSiteSystem.Model;
 
-    public class TouristSitesSystemDbContext : IdentityDbContext<User> , ITouristSitesSystemDbContext
+    public class TouristSitesSystemDbContext : IdentityDbContext<User>, ITouristSitesSystemDbContext
     {
         public TouristSitesSystemDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
