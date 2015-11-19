@@ -7,6 +7,9 @@
     using TouristSiteSystem.Data;
     using TouristSiteSystem.Model;
     using System.Web.Http.Cors;
+    using System.Net.Http;
+    using Providers;
+    using System;
 
     [EnableCors("*", "*", "*")]
     public class ImagesController : BaseController
@@ -47,23 +50,39 @@
 
         [Authorize]
         [HttpPost]
-        public IHttpActionResult Post(ImageRequestModel model)
+        public IHttpActionResult Post()
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest(this.ModelState);
-            }
+            Request.Content.LoadIntoBufferAsync().Wait();
+            var src = string.Empty;
+            var touristSiteId = int.Parse(Request.Headers.First(x => x.Key == "touristSiteId").Value.First());
 
-            var imageToAdd = new Image
+            Request.Content.ReadAsMultipartAsync<MultipartMemoryStreamProvider>(new MultipartMemoryStreamProvider()).ContinueWith((task) =>
             {
-                Url = model.Url,
-                Description = model.Description,
-                TouristSideId = model.TouristSideId,
-                UserId = model.UserId
-            };
+                MultipartMemoryStreamProvider provider = task.Result;
 
-            this.data.Images.Add(imageToAdd);
-            data.SaveChanges();
+                foreach (HttpContent content in provider.Contents)
+                {
+                    var bytesContent = content.ReadAsByteArrayAsync().Result;
+
+                    var myDropboxProvider = new DropboxProvider();
+
+
+                    var path = "/" + Guid.NewGuid().ToString() + ".jpg";
+                    src = myDropboxProvider.UploadFile(bytesContent, path);
+
+                    var imageToAdd = new Image
+                    {
+                        Url = src,
+                        Extension = "jpg",
+                        Description = path,
+                        TouristSideId = touristSiteId,
+                        UserId = "8bdc9e17-3dd2-4d26-bd74-fef01ef41da6"
+                    };
+
+                    this.data.Images.Add(imageToAdd);
+                    data.SaveChanges();
+                }
+            });
 
             return this.Ok();
         }
