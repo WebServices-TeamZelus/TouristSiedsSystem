@@ -48,4 +48,4 @@ to share more of the beauty of Bulgaria to the world.
 
 # URL of the source control repository
 * [http://bgtouristsites.azurewebsites.net/](http://bgtouristsites.azurewebsites.net/)
-* [touristsites.azurewebsites.net](touristsites.azurewebsites.net)
+* [http://touristsites.azurewebsites.net/](http://touristsites.azurewebsites.net/)
