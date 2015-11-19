@@ -20,6 +20,32 @@ to share more of the beauty of Bulgaria to the world.
 ![](https://github.com/WebServices-TeamZelus/TouristSitesSystem/blob/master/TouristSitesSystem/ClassDiagram.png)
 
 # API Methods
+* Images
+  * Get - gets all ot the images from the database
+  * GetById - gets the image with the given id from the database
+  * Post - adds a new image in the database. This method can be used only by authorized users
+  * Delete - deletes the image with the given id from the database. This method can be used only by authorized users
+  * Put - updates an image in the database. This method can be used only by authorized users
+  
+* Tourist Sites
+  * Get - gets all tourist sites from the database
+  * GetById - gets the tourist site with the given id from the database
+  * Post - adds new tourist site in the database. This method can be used only by authorized users
+  * Delete - deletes the tourist site with the given id from the databse. This method can be used only by authorized users
+  * Put - updates a tourist site in the database. This method can be used only by authorized users
+
+* Cities
+  * Get - gets all cities from the database
+  * GetById - gets the city with the given id from the database
+  * Search - gets the city with the given name from the database
+  
+* Accomodations
+  * Get - gets all accomodations from the database
+  * GetById - gets the accomodotion with the given id from the database
+  * Post - adds an accomodation to the database. This method can be used only by authorized users
+  * Delete - deletes an accomodation from the database, This method can be used only by authorized users
+  * Put - this method changes an accomodation and saves the changes into the database. This method can be used only by authorized users
 
 # URL of the source control repository
 * [http://bgtouristsites.azurewebsites.net/](http://bgtouristsites.azurewebsites.net/)
+* [http://touristsites.azurewebsites.net/](http://touristsites.azurewebsites.net/)
