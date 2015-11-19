@@ -1,4 +1,4 @@
-﻿namespace TouristSitesSystem.Api.Tests
+﻿namespace TouristSitesSystem.Api.Tests.ControllerTests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Controllers;

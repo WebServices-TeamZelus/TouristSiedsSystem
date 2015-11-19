@@ -1,4 +1,4 @@
-﻿namespace TouristSitesSystem.Api.Tests
+﻿namespace TouristSitesSystem.Api.Tests.ControllerTests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Controllers;
@@ -8,31 +8,31 @@
     using TouristSiteSystem.Model;
 
     [TestClass]
-    public class TouristSitesControllerTests
+    public class CitiesControllerTests
     {
         [TestMethod]
-        public void GetAllShouldReturnZeroTouristSitesWhenEmpty()
+        public void GetAllShouldReturnZeroCitiesWhenEmpty()
         {
             var data = new FakeTouristSitesData();
-            var controller = new TouristSitesController(data);
+            var controller = new CitiesController(data);
 
             var result = controller.Get();
 
-            var okResult = result as OkNegotiatedContentResult<List<TouristSiteResponseModel>>;
+            var okResult = result as OkNegotiatedContentResult<List<CityResponseModel>>;
 
             Assert.IsNotNull(okResult);
             Assert.AreEqual(0, okResult.Content.Count);
         }
 
         [TestMethod]
-        public void GetShouldReturnOneTouristSiteWhenThereIsOne()
+        public void GetShouldReturnOneCityWhenThereIsOne()
         {
             var data = new FakeTouristSitesData();
-            data.TouristSites.Add(new TouristSite());
-            var controller = new TouristSitesController(data);
+            data.Cities.Add(new City());
+            var controller = new CitiesController(data);
             var result = controller.Get();
 
-            var okResult = result as OkNegotiatedContentResult<List<TouristSiteResponseModel>>;
+            var okResult = result as OkNegotiatedContentResult<List<CityResponseModel>>;
 
             Assert.IsNotNull(okResult);
             Assert.AreEqual(1, okResult.Content.Count);
