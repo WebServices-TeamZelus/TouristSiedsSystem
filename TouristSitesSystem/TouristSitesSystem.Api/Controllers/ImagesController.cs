@@ -56,6 +56,11 @@
             var src = string.Empty;
             var touristSiteId = int.Parse(Request.Headers.First(x => x.Key == "touristSiteId").Value.First());
 
+            var currentTouristSite = this.data
+                .TouristSites
+                .All()
+                .FirstOrDefault(x => x.TouristSiteId == touristSiteId);
+
             Request.Content.ReadAsMultipartAsync<MultipartMemoryStreamProvider>(new MultipartMemoryStreamProvider()).ContinueWith((task) =>
             {
                 MultipartMemoryStreamProvider provider = task.Result;
@@ -78,6 +83,8 @@
                         TouristSideId = touristSiteId,
                         UserId = "8bdc9e17-3dd2-4d26-bd74-fef01ef41da6"
                     };
+
+                    imageToAdd.TouristSite = currentTouristSite;
 
                     this.data.Images.Add(imageToAdd);
                     data.SaveChanges();
