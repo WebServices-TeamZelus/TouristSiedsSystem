@@ -14,7 +14,8 @@
                 {
                     ImageId=i.ImageId,
                     Url = i.Url,
-                    TouristSiteName = i.TouristSite.Name
+                    TouristSiteName = i.TouristSite.Name,
+                    TouristSiteId = i.TouristSideId
                 };
             }
         }
@@ -24,5 +25,7 @@
         public string Url { get; set; }
 
         public string TouristSiteName { get; set; }
+
+        public int TouristSiteId { get; set; }
     }
 }
