@@ -38,7 +38,7 @@ to share more of the beauty of Bulgaria to the world.
   * Get - gets all cities from the database
   * GetById - gets the city with the given id from the database
   * Search - gets the city with the given name from the database
-  * 
+  
 * Accomodations
   * Get - gets all accomodations from the database
   * GetById - gets the accomodotion with the given id from the database
