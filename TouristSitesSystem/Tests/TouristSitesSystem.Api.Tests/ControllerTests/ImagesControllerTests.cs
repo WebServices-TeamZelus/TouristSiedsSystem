@@ -11,6 +11,7 @@
     public class ImagesControllerTests
     {
         [TestMethod]
+        [TestCategory("Controller")]
         public void GetAllShouldReturnZeroImagesWhenEmpty()
         {
             var data = new FakeTouristSitesData();

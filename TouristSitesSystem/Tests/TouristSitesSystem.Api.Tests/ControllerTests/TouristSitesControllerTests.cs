@@ -11,6 +11,7 @@
     public class TouristSitesControllerTests
     {
         [TestMethod]
+        [TestCategory("Controller")]
         public void GetAllShouldReturnZeroTouristSitesWhenEmpty()
         {
             var data = new FakeTouristSitesData();
@@ -25,6 +26,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Controller")]
         public void GetShouldReturnOneTouristSiteWhenThereIsOne()
         {
             var data = new FakeTouristSitesData();

@@ -2,7 +2,7 @@
 {
     using System.Net.Http;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    
+
     using Controllers;
     using Models;
 
@@ -13,6 +13,7 @@
     public class TouristSitesControllerTests
     {
         [TestMethod]
+        [TestCategory("Route")]
         public void GetShouldMapCorrectly()
         {
             MyWebApi
@@ -22,6 +23,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void GetWithIdShouldMapCorrectly()
         {
             MyWebApi
@@ -31,6 +33,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void PostWithValidModelStateShouldMapCorrectly()
         {
             MyWebApi
@@ -48,6 +51,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void PostWithoutNameShouldBeResolvedToInvalidModelState()
         {
             MyWebApi
@@ -64,6 +68,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void PostWithoutCityIdShouldBeResolvedToInvalidModelState()
         {
             MyWebApi

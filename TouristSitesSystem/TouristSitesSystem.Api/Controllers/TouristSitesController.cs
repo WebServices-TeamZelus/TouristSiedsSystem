@@ -15,6 +15,11 @@
         {
         }
 
+        public TouristSitesController()
+            : this(new TouristSiteData(new TouristSitesSystemDbContext()))
+        {
+        }
+
         [HttpGet]
         public IHttpActionResult Get()
         {

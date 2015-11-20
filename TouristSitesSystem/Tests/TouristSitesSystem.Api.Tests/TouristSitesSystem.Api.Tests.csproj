@@ -99,6 +99,8 @@
     <Compile Include="Fakes\FakeRepository.cs" />
     <Compile Include="Fakes\FakeTouristSitesData.cs" />
     <Compile Include="IntegrationTests\CitiesTests.cs" />
+    <Compile Include="IntegrationTests\AccomodationsTests.cs" />
+    <Compile Include="IntegrationTests\TouristSitesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ControllerTests\ImagesControllerTests.cs" />
     <Compile Include="ControllerTests\CitiesControllerTests.cs" />

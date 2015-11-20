@@ -12,6 +12,7 @@
     public class ImagesControllerTests
     {
         [TestMethod]
+        [TestCategory("Route")]
         public void GetShouldMapCorrectly()
         {
             MyWebApi
@@ -21,6 +22,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void GetByIdShouldMapCorrectly()
         {
             MyWebApi
@@ -30,6 +32,7 @@
         }
 
         //[TestMethod]
+        //[TestCategory("Route")]
         //public void PostWithValidModelStateShouldMapCorrectly()
         //{
         //    MyWebApi
@@ -48,6 +51,7 @@
         //}
 
         //[TestMethod]
+        //[TestCategory("Route")]
         //public void PostWithoutUrlShouldBeResolvedToInvalidModelState()
         //{
         //    MyWebApi
@@ -65,6 +69,7 @@
         //}
 
         //[TestMethod]
+        //[TestCategory("Route")]
         //public void PostWithoutTouristSiteIdShouldBeResolvedToInvalidModelState()
         //{
         //    MyWebApi
@@ -82,6 +87,7 @@
         //}
 
         //[TestMethod]
+        //[TestCategory("Route")]
         //public void PostWithoutUserIdShouldBeResolvedToInvalidModelState()
         //{
         //    MyWebApi

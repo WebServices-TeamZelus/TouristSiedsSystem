@@ -10,6 +10,7 @@
     public class CitiesControllerTests
     {
         [TestMethod]
+        [TestCategory("Route")]
         public void GetShouldMapCorrectly()
         {
             MyWebApi
@@ -19,6 +20,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void GetByIdShouldMapCorrectly()
         {
             MyWebApi
@@ -28,6 +30,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void SearchByNameShouldMapCorrectly()
         {
             MyWebApi

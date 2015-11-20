@@ -12,6 +12,7 @@
     public class AccomodationsControllerTests
     {
         [TestMethod]
+        [TestCategory("Route")]
         public void GetShouldMapCorrectly()
         {
             MyWebApi
@@ -21,6 +22,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void GetByIdShouldMapCorrectly()
         {
             MyWebApi
@@ -30,6 +32,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void PostWithValidModelStateShouldMapCorrectly()
         {
             MyWebApi
@@ -47,6 +50,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void PostWithoutNameShouldBeResolvedToInvalidModelState()
         {
             MyWebApi
@@ -63,6 +67,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void PostWithoutAddressShouldBeResolvedToInvalidModelState()
         {
             MyWebApi
@@ -79,6 +84,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Route")]
         public void PostWithoutCityIdShouldBeResolvedToInvalidModelState()
         {
             MyWebApi

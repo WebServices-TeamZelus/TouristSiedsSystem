@@ -11,6 +11,7 @@
     public class CitiesControllerTests
     {
         [TestMethod]
+        [TestCategory("Controller")]
         public void GetAllShouldReturnZeroCitiesWhenEmpty()
         {
             var data = new FakeTouristSitesData();
@@ -25,6 +26,7 @@
         }
 
         [TestMethod]
+        [TestCategory("Controller")]
         public void GetShouldReturnOneCityWhenThereIsOne()
         {
             var data = new FakeTouristSitesData();

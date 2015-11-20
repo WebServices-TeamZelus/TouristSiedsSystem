@@ -11,7 +11,7 @@
     using Models;
 
     [TestClass]
-    public class CitiesTests
+    public class TouristSitesTests
     {
         private HttpMessageInvoker httpInvoker;
 
@@ -31,13 +31,13 @@
 
         [TestMethod]
         [TestCategory("Integration")]
-        public void GetCitiesShouldReturnCollectionOfCities()
+        public void GetTouristSitesShouldReturnCollectionOfTouristSites()
         {
             using (this.httpInvoker)
             {
                 var request = new HttpRequestMessage
                 {
-                    RequestUri = new Uri("http://test.com/api/Cities"),
+                    RequestUri = new Uri("http://test.com/api/TouristSites"),
                     Method = HttpMethod.Get
                 };
 
@@ -48,21 +48,21 @@
 
                 object resultValue;
                 var hasValue = response.TryGetContentValue(out resultValue);
-                var cities = resultValue as List<CityResponseModel>;
+                var touristSites = resultValue as List<TouristSiteResponseModel>;
 
-                Assert.IsTrue(cities.Count > 0);
+                Assert.IsTrue(touristSites.Count > 0);
             }
         }
 
         [TestMethod]
         [TestCategory("Integration")]
-        public void GetCityByValidIdShouldReturnTheCity()
+        public void GetTouristSiteByValidIdShouldReturnTheTouristSite()
         {
             using (this.httpInvoker)
             {
                 var request = new HttpRequestMessage
                 {
-                    RequestUri = new Uri("http://test.com/api/Cities/1"),
+                    RequestUri = new Uri("http://test.com/api/TouristSites/1"),
                     Method = HttpMethod.Get
                 };
 
@@ -74,20 +74,20 @@
                 object resultValue;
                 var hasValue = response.TryGetContentValue(out resultValue);
 
-                var city = resultValue as CityResponseModel;
-                Assert.AreEqual(1, city.CityId);
+                var touristSite = resultValue as TouristSiteResponseModel;
+                Assert.AreEqual(1, touristSite.TouristSiteId);
             }
         }
 
         [TestMethod]
         [TestCategory("Integration")]
-        public void GetCityByInvalidIdShouldReturnNotFound()
+        public void GetTouristSiteByInvalidIdShouldReturnTheTouristSite()
         {
             using (this.httpInvoker)
             {
                 var request = new HttpRequestMessage
                 {
-                    RequestUri = new Uri("http://test.com/api/Cities/999"),
+                    RequestUri = new Uri("http://test.com/api/TouristSites/999"),
                     Method = HttpMethod.Get
                 };
 
@@ -95,31 +95,6 @@
 
                 Assert.IsNotNull(response);
                 Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
-            }
-        }
-
-        [TestMethod]
-        [TestCategory("Integration")]
-        public void SearchCityByValidNameShouldReturnTheCity()
-        {
-            using (this.httpInvoker)
-            {
-                var request = new HttpRequestMessage
-                {
-                    RequestUri = new Uri("http://test.com/api/Cities?name=Sofia"),
-                    Method = HttpMethod.Get
-                };
-
-                var response = this.httpInvoker.SendAsync(request, CancellationToken.None).Result;
-
-                Assert.IsNotNull(response);
-                Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-
-                object resultValue;
-                var hasValue = response.TryGetContentValue(out resultValue);
-
-                var city = resultValue as CityResponseModel;
-                Assert.AreEqual("Sofia", city.Name);
             }
         }
     }
