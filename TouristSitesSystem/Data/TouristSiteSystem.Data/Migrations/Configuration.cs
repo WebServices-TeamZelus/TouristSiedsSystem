@@ -2,6 +2,7 @@ namespace TouristSiteSystem.Data.Migrations
 {
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
+
     public sealed class Configuration : DbMigrationsConfiguration<TouristSitesSystemDbContext>
     {
         public Configuration()
