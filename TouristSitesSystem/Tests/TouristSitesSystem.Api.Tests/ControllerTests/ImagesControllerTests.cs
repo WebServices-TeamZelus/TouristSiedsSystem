@@ -1,10 +1,10 @@
 ﻿namespace TouristSitesSystem.Api.Tests.ControllerTests
 {
+    using System.Web.Http.Results;
+    using System.Collections.Generic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Controllers;
     using TouristSiteSystem.Model;
-    using System.Web.Http.Results;
-    using System.Collections.Generic;
     using Models;
 
     [TestClass]

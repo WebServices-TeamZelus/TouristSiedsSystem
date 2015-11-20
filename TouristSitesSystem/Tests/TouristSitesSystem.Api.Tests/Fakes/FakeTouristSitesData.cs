@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TouristSiteSystem.Data;
-using TouristSiteSystem.Model;
-
-namespace TouristSitesSystem.Api.Tests
+﻿namespace TouristSitesSystem.Api.Tests
 {
-    class FakeTouristSitesData: ITouristSiteData
+    using TouristSiteSystem.Data;
+    using TouristSiteSystem.Model;
+
+    class FakeTouristSitesData : ITouristSiteData
     {
         private FakeRepository<Accomodation> accomodations;
         private FakeRepository<Image> images;
@@ -71,7 +66,7 @@ namespace TouristSitesSystem.Api.Tests
 
         int ITouristSiteData.SaveChanges()
         {
-            return SaveChangesCallCount++;
+            return this.SaveChangesCallCount++;
         }
     }
 }

@@ -5,7 +5,6 @@
 
     public class TouristSite
     {
-
         private ICollection<User> user;
 
         private ICollection<Image> images;

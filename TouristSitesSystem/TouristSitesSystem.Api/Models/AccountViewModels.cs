@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TouristSitesSystem.Api.Models
+﻿namespace TouristSitesSystem.Api.Models
 {
-    // Models returned by AccountController actions.
+    using System;
+    using System.Collections.Generic;
+    //// Models returned by AccountController actions.
 
     public class ExternalLoginViewModel
     {

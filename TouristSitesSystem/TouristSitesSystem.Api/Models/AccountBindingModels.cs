@@ -1,10 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-
-namespace TouristSitesSystem.Api.Models
+﻿namespace TouristSitesSystem.Api.Models
 {
-    // Models used as parameters to AccountController actions.
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using Newtonsoft.Json;
+    //// Models used as parameters to AccountController actions.
 
     public class AddExternalLoginBindingModel
     {

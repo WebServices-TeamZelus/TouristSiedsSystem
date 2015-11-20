@@ -12,7 +12,7 @@
             {
                 return i => new ImageResponseModel
                 {
-                    ImageId=i.ImageId,
+                    ImageId = i.ImageId,
                     Url = i.Url,
                     TouristSiteName = i.TouristSite.Name,
                     TouristSiteId = i.TouristSideId

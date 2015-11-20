@@ -14,7 +14,7 @@ namespace TouristSitesSystem.Api
         {
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
-            ConfigureAuth(app);
+            this.ConfigureAuth(app);
         }
     }
 }

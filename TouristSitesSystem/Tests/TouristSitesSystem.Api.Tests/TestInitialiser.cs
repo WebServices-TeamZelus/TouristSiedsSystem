@@ -12,14 +12,14 @@
         public static void AssemblyInitialiser(TestContext context)
         {
             var config = new HttpConfiguration();
-            //config.MapHttpAttributeRoutes();
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
+            ////config.MapHttpAttributeRoutes();
+            ////config.Routes.MapHttpRoute(
+            ////    name: "DefaultApi",
+            ////    routeTemplate: "api/{controller}/{id}",
+            ////    defaults: new { id = RouteParameter.Optional }
+            ////);
 
-            //MyWebApi.IsUsing(config);
+            ////MyWebApi.IsUsing(config;)
 
             WebApiConfig.Register(config);
             MyWebApi.IsUsing(config);

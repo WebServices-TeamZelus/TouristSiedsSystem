@@ -1,11 +1,9 @@
 ﻿namespace TouristSitesSystem.Api.Tests.RouteTests
 {
     using System.Net.Http;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Controllers;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Models;
-
     using MyTested.WebApi;
 
     [TestClass]

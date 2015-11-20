@@ -4,8 +4,7 @@
 
     public class Image
     {
- 
-        public int ImageId { get; set; }
+         public int ImageId { get; set; }
 
         [Required]
         [MaxLength(150)]

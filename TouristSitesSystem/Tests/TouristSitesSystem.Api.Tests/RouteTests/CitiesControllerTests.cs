@@ -1,9 +1,7 @@
 ﻿namespace TouristSitesSystem.Api.Tests.RouteTests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Controllers;
-
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using MyTested.WebApi;
 
     [TestClass]

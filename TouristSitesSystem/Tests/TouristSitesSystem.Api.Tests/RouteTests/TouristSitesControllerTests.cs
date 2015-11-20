@@ -1,13 +1,11 @@
 ﻿namespace TouristSitesSystem.Api.Tests.RouteTests
 {
     using System.Net.Http;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using Controllers;
     using Models;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using MyTested.WebApi;
-
 
     [TestClass]
     public class TouristSitesControllerTests
@@ -83,6 +81,5 @@
                 }))
                 .ToInvalidModelState();
         }
-
     }
 }

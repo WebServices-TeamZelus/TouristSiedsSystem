@@ -100,7 +100,7 @@
             var accomodation = this.data
                              .Accomodations
                              .All()
-                             .Where(a => a.AccomodationId==id)
+                             .Where(a => a.AccomodationId == id)
                              .FirstOrDefault();
 
             if (accomodation == null)

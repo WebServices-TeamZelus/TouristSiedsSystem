@@ -1,10 +1,10 @@
 ﻿namespace TouristSitesSystem.Api.Providers
 {
+    using System.Threading;
     using Spring.IO;
     using Spring.Social.Dropbox.Api;
     using Spring.Social.Dropbox.Connect;
     using Spring.Social.OAuth1;
-    using System.Threading;
 
     public class DropboxProvider : ICloudProvider
     {
@@ -27,11 +27,11 @@
             Entry uploadFileEntry = dropbox.UploadFileAsync(
                    resource, path, true, null, CancellationToken.None).Result;
 
-            //var src = dropbox.GetMediaLinkAsync(path).Result.Url;
+            ////var src = dropbox.GetMediaLinkAsync(path).Result.Url;
 
             var src = GetSrc(path);
 
-            //var a = dropbox.GetShareableLinkAsync(path).Result.Url;
+            ////var a = dropbox.GetShareableLinkAsync(path).Result.Url;
 
             return src;
         }

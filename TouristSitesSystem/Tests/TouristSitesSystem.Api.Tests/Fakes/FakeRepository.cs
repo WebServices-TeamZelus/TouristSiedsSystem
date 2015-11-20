@@ -47,13 +47,14 @@
 
         public T GetById(object id)
         {
-            for (int i = 0; i < entities.Count; i++)
+            for (int i = 0; i < this.entities.Count; i++)
             {
-                if (entities[i] == id)
+                if (this.entities[i] == id)
                 {
-                    return entities[i];
+                    return this.entities[i];
                 }
             }
+
             return entities[0];
         }
 

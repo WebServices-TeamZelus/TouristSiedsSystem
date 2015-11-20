@@ -1,15 +1,14 @@
 ﻿namespace TouristSitesSystem.Api.Controllers
 {
+    using System;
     using System.Linq;
+    using System.Net.Http;
     using System.Web.Http;
-
+    using System.Web.Http.Cors;
     using Models;
     using TouristSiteSystem.Data;
-    using TouristSiteSystem.Model;
-    using System.Web.Http.Cors;
-    using System.Net.Http;
+    using TouristSiteSystem.Model; 
     using Providers;
-    using System;
 
     [EnableCors("*", "*", "*")]
     public class ImagesController : BaseController
@@ -76,8 +75,8 @@
 
                     var myDropboxProvider = new DropboxProvider();
 
-
                     var path = "/" + Guid.NewGuid().ToString() + ".jpg";
+
                     src = myDropboxProvider.UploadFile(bytesContent, path);
 
                     var imageToAdd = new Image
